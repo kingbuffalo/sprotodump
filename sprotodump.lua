@@ -18,6 +18,7 @@ usage: lua sprotodump.lua <option> <sproto_file1 sproto_file2 ...> [[<out_option
     out_option:
         -d <dircetory>               dump to speciffic dircetory
         -o <file>                    dump to speciffic file
+        -g <file>                    dump to speciffic file
         -p <package name>            set package name(only cSharp code use)
 
     namespace_option:
@@ -56,3 +57,5 @@ local m = module[param.dump_type]
 local trunk_list = _gen_trunk_list(param.sproto_file, param.namespace)
 local trunk, build = parse_core.gen_trunk(trunk_list)
 m(trunk, build, param)
+local wg = require("genInstance")
+wg(param.sproto_file,param.genoutfile or "SprotoFact.cs")

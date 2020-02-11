@@ -91,6 +91,7 @@ local function parse_param(...)
     dircetory = false,
     package = false,
     outfile = false,
+    genoutfile = false,
     namespace = false,
 
     sproto_file = {},
@@ -113,6 +114,7 @@ local function parse_param(...)
   local out_option = {
     ["-d"] = { "dircetory", 1},
     ["-o"] = { "outfile", 1},
+    ["-g"] = { "genoutfile", 1},
     ["-p"] = { "package", 1},
     ["-split"] = { "split", 1},
     ["-crypt"] = { "crypt", 0},
