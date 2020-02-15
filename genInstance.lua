@@ -13,7 +13,7 @@ local function main(fnl,wfn)
 
 	local str = [[
 static class SprotoFact{
-	public static SprotoTypeBase GenProto(int id)
+	public static Sproto.SprotoTypeBase GenProto(int id)
 	{
 		switch (id)
 		{]]
@@ -21,13 +21,35 @@ static class SprotoFact{
 		}
 		return null;
 	}
+]]
+
+	local str2 = [[
+	public static ushort GetProtoId(System.Guid id)
+	{
+		System.Type t;
+]]
+	local fmt2 = [[
+		t = typeof(SprotoType.%s);
+		if (t.GUID == id) return %d;
+	]]
+	local str2tail = [[
+		return 0;
+	}
 }]]
+--}]]
 
 	local strMidT = {str}
 	for k,v in pairs(intMapClass) do
 		strMidT[#strMidT+1] = string.format(fmt,k,v)
 	end
 	strMidT[#strMidT+1] = strTail
+
+	strMidT[#strMidT+1] = str2
+	for k,v in pairs(intMapClass) do
+		strMidT[#strMidT+1] = string.format(fmt2,v,k)
+	end
+	strMidT[#strMidT+1] = str2tail
+
 	local wStr = table.concat(strMidT,"\n")
 	print(wStr)
 

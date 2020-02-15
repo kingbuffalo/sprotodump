@@ -1,5 +1,5 @@
 static class SprotoFact{
-	public static SprotoTypeBase GenProto(int id)
+	public static SprotoType.SprotoTypeBase GenProto(int id)
 	{
 		switch (id)
 		{
@@ -11,5 +11,21 @@ static class SprotoFact{
 			return new SprotoType.LoginR();
 		}
 		return null;
+	}
+
+	public static short GetProtoId(System.Guid id)
+	{
+		System.Type t;
+
+		t = typeof(SprotoType.Login);
+		if (t.GUID == id) return 10001;
+	
+		t = typeof(SprotoType.ErrorR);
+		if (t.GUID == id) return 30001;
+	
+		t = typeof(SprotoType.LoginR);
+		if (t.GUID == id) return 20001;
+	
+		return 0;
 	}
 }
