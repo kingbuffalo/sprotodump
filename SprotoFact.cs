@@ -1,5 +1,5 @@
 static class SprotoFact{
-	public static SprotoType.SprotoTypeBase GenProto(int id)
+	public static Sproto.SprotoTypeBase GenProto(int id)
 	{
 		switch (id)
 		{
@@ -13,7 +13,7 @@ static class SprotoFact{
 		return null;
 	}
 
-	public static short GetProtoId(System.Guid id)
+	public static ushort GetProtoId(System.Guid id)
 	{
 		System.Type t;
 

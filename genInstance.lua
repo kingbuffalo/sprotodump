@@ -51,12 +51,24 @@ static class SprotoFact{
 	strMidT[#strMidT+1] = str2tail
 
 	local wStr = table.concat(strMidT,"\n")
-	print(wStr)
 
 	local wf = io.open(wfn,"w")
 	wf:write(wStr)
 	wf:flush()
 	wf:close()
+
+	local luaFmt = "\t[%d]=\"%s\","
+	local luastrT = {"return {"}
+	for k,v in pairs(intMapClass) do
+		luastrT[#luastrT+1] = string.format(luaFmt,k,v)
+	end
+	luastrT[#luastrT+1] = "}"
+	wStr = table.concat(luastrT,"\n")
+	local wf = io.open("protoT.lua","w")
+	wf:write(wStr)
+	wf:flush()
+	wf:close()
+
 end
 
 return main
