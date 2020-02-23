@@ -202,6 +202,64 @@ namespace SprotoType {
 	}
 
 
+	public class MatchAckCP : SprotoTypeBase {
+		private static int max_field_count = 0;
+		
+		
+		public MatchAckCP () : base(max_field_count) {}
+
+		public MatchAckCP (byte[] buffer) : base(max_field_count, buffer) {
+			this.decode ();
+		}
+
+		protected override void decode () {
+			int tag = -1;
+			while (-1 != (tag = base.deserialize.read_tag ())) {
+				switch (tag) {
+				default:
+					base.deserialize.read_unknow_data ();
+					break;
+				}
+			}
+		}
+
+		public override int encode (SprotoStream stream) {
+			base.serialize.open (stream);
+
+			return base.serialize.close ();
+		}
+	}
+
+
+	public class MatchAckP : SprotoTypeBase {
+		private static int max_field_count = 0;
+		
+		
+		public MatchAckP () : base(max_field_count) {}
+
+		public MatchAckP (byte[] buffer) : base(max_field_count, buffer) {
+			this.decode ();
+		}
+
+		protected override void decode () {
+			int tag = -1;
+			while (-1 != (tag = base.deserialize.read_tag ())) {
+				switch (tag) {
+				default:
+					base.deserialize.read_unknow_data ();
+					break;
+				}
+			}
+		}
+
+		public override int encode (SprotoStream stream) {
+			base.serialize.open (stream);
+
+			return base.serialize.close ();
+		}
+	}
+
+
 	public class MatchP : SprotoTypeBase {
 		private static int max_field_count = 1;
 		

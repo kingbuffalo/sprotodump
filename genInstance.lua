@@ -6,7 +6,11 @@ local function genIntMapClass(fnl)
 		local allStr = f:read("*a")
 		f:close();
 		for k,v in allStr:gmatch(reg) do
-			intMapClass[tonumber(k)] = v
+			if intMapClass[tonumber(k)] ~= nil then
+				assert(false,"k= " .. k .. " redefine")
+			else
+				intMapClass[tonumber(k)] = v
+			end
 		end
 	end
 	return intMapClass

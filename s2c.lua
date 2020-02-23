@@ -21,7 +21,13 @@
 	name 1 : string
 	headIcon 2: string
 }
+
+
 #31001 
 .MatchP{
 	matchPlayerList 0 : *MatchPlayer
+}
+
+#31002
+.MatchAckP{
 }
