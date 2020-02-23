@@ -66,6 +66,7 @@ local function writeCSharpCmdConst(intMapClass)
 	static class CmdConst{
 %s
 	}
+}
 	]]
 	local midFmt = "\t\tpublic static int %s = %d;"
 	local strT = {}
