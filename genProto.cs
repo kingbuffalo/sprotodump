@@ -3,8 +3,6 @@ static class SprotoFact{
 	{
 		switch (id)
 		{
-			case 10001:
-			return new SprotoType.Login(data);
 			case 30001:
 			return new SprotoType.ErrorR(data);
 			case 20001:
@@ -17,9 +15,6 @@ static class SprotoFact{
 	{
 		System.Type t;
 
-		t = typeof(SprotoType.Login);
-		if (t.GUID == id) return 10001;
-	
 		t = typeof(SprotoType.ErrorR);
 		if (t.GUID == id) return 30001;
 	
