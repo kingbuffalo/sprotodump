@@ -1,8 +1,16 @@
 return {
-	[10001]="Login",
-	Login=10001,
+	[11001]="Match",
+	Match=11001,
+	[31001]="MatchP",
+	MatchP=31001,
+	[1001]="MatchPlayer",
+	MatchPlayer=1001,
 	[30001]="ErrorR",
 	ErrorR=30001,
+	[21001]="MatchR",
+	MatchR=21001,
+	[10001]="Login",
+	Login=10001,
 	[20001]="LoginR",
 	LoginR=20001,
 }
