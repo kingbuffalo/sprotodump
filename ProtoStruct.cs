@@ -261,16 +261,25 @@ namespace SprotoType {
 
 
 	public class MatchP : SprotoTypeBase {
-		private static int max_field_count = 1;
+		private static int max_field_count = 2;
 		
 		
-		private List<MatchPlayer> _matchPlayerList; // tag 0
-		public List<MatchPlayer> matchPlayerList {
-			get { return _matchPlayerList; }
-			set { base.has_field.set_field (0, true); _matchPlayerList = value; }
+		private List<MatchPlayer> _teamer; // tag 0
+		public List<MatchPlayer> teamer {
+			get { return _teamer; }
+			set { base.has_field.set_field (0, true); _teamer = value; }
 		}
-		public bool HasMatchPlayerList {
+		public bool HasTeamer {
 			get { return base.has_field.has_field (0); }
+		}
+
+		private List<MatchPlayer> _oppos; // tag 1
+		public List<MatchPlayer> oppos {
+			get { return _oppos; }
+			set { base.has_field.set_field (1, true); _oppos = value; }
+		}
+		public bool HasOppos {
+			get { return base.has_field.has_field (1); }
 		}
 
 		public MatchP () : base(max_field_count) {}
@@ -284,7 +293,10 @@ namespace SprotoType {
 			while (-1 != (tag = base.deserialize.read_tag ())) {
 				switch (tag) {
 				case 0:
-					this.matchPlayerList = base.deserialize.read_obj_list<MatchPlayer> ();
+					this.teamer = base.deserialize.read_obj_list<MatchPlayer> ();
+					break;
+				case 1:
+					this.oppos = base.deserialize.read_obj_list<MatchPlayer> ();
 					break;
 				default:
 					base.deserialize.read_unknow_data ();
@@ -297,7 +309,11 @@ namespace SprotoType {
 			base.serialize.open (stream);
 
 			if (base.has_field.has_field (0)) {
-				base.serialize.write_obj (this.matchPlayerList, 0);
+				base.serialize.write_obj (this.teamer, 0);
+			}
+
+			if (base.has_field.has_field (1)) {
+				base.serialize.write_obj (this.oppos, 1);
 			}
 
 			return base.serialize.close ();
